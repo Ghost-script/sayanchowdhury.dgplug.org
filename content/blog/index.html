@@ -1,0 +1,49 @@
+---
+title: Blog
+---
+{% extends "base.j2" %}
+
+{% block content %}
+<article class="asymetrical-columns-left reading-block clearfix">
+<p>I write about open-source technologies, and web technologies.
+</p>
+
+<h2>Most popular posts</h2>
+<ul>
+    {% for post in most_popular.posts %}
+    <li><a href="{{ post.url }}">{{ post.title }}</a></li>
+    {% endfor %}
+</ul>
+
+<p><a href="{{ content_url("blog/archive.html") }}">Archive</a>
+- if you're interested in older posts or looking for something specific.</p>
+</article>
+
+<article class="asymetrical-columns-right reading-block">
+<h2>Latest posts</h2>
+
+{% for res in site.content.walk_resources_sorted_by_latest()[0:5] %}
+{% refer to res.url as post %}
+
+<h1><a href="{{ content_url(res.url) }}">{{ res.meta.title }}</a></h1>
+{% if post.excerpt %} {# Excerpt #}
+    {% set res_url = content_url(res.url) %}
+    {% if post.image %}
+    <a href="{{ res_url }}">{{ post.image|markdown }}</a>
+    {% endif %}
+
+    {{ [post.excerpt, " [Read more](", res_url, ")"]
+       |join("")|markdown|typogrify }}
+
+{% else %}{# Whole article #}
+    {{ post.article_content|markdown|typogrify }}
+{% endif %}
+{% endfor %}
+
+<hr>
+<p>
+    If you want to read more, check out the
+    <a href="{{ content_url("blog/archive.html") }}">archive</a>.
+</p>
+</article>
+{% endblock %}

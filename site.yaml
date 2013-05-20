@@ -1,0 +1,52 @@
+mode: development
+media_root: media
+media_url: /media
+template: hyde.ext.templates.jinja.Jinja2Template
+plugins:
+    - hyde.ext.plugins.meta.MetaPlugin
+    - hyde.ext.plugins.auto_extend.AutoExtendPlugin
+    - hyde.ext.plugins.urls.UrlCleanerPlugin
+    - hyde.ext.plugins.sorter.SorterPlugin
+    - hyde.ext.plugins.grouper.GrouperPlugin
+    - hyde.ext.plugins.textlinks.TextlinksPlugin
+meta:
+    nodemeta: meta.yaml
+    ga_tracking_code: UA-21972762-1
+context:
+    data:
+        menu:
+            - name: Home
+              type: page
+              url: index.html
+            - name: About
+              type: page
+              url: about.html
+            - name: Blog
+              type: node
+              url: blog/
+    providers:
+        most_popular: most_popular.yaml
+urlcleaner:
+    index_file_names:
+        - index.html
+
+sorter:
+    latest:
+        attr: meta.created
+        reverse: True
+
+grouper:
+    category:
+        sorter: latest
+        description: Blog category
+        groups:
+            - name: Tech
+              description: Software engineering
+            - name: Design
+              description: Sketching, visual arts and design
+            - name: News
+              description: Announcements and coverages
+            - name: People
+              description: Psychology, education and motivation
+            - name: Travel
+              description: World exploration

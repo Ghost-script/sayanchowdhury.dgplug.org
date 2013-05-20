@@ -1,0 +1,64 @@
+{% extends "base.j2" %}
+
+{% block content %}
+<article class="reading-block">
+
+{% if resource.meta.created -%}
+<time datetime="{{ resource.meta.created.strftime('%Y-%m-%d') }}">
+    {{ resource.meta.created.strftime('%Y-%m-%d') }}
+</time>
+{%- endif %}
+
+{% if resource.meta.title -%}
+<h1>{{ resource.meta.title }}</h1>
+{%- endif %}
+
+{% filter markdown|typogrify -%}
+    {% mark article_content -%}
+    {% block article_content %}{% endblock %}
+    {%- endmark %}
+{%- endfilter %}
+<hr>
+</article>
+
+<p class="reading-block">Read this next:<br />
+{% if resource.next_by_latest is not none %}
+     <a href="{{ resource.next_by_latest.full_url }}">
+    {{ resource.next_by_latest.meta.title }}</a>
+{% else %}
+    {% set latest_post = site.content.walk_resources_sorted_by_latest()|first %}
+     <a href="{{ latest_post.full_url }}">
+    {{ latest_post.meta.title }}</a>
+{% endif %}
+</p>
+
+<br />
+
+<div id="disqus_thread" class="reading-block"></div>
+	<script type="text/javascript">
+		/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+	    var disqus_shortname = 'sayanchowdhury'; // required: replace example with your forum shortname
+	    /* * * DON'T EDIT BELOW THIS LINE * * */
+	    (function() {
+		    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+	        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+	        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+	    })();
+	</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'sayanchowdhury'; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
+    
+{% endblock %}

@@ -1,0 +1,31 @@
+{% extends "base.j2" %}
+
+{% block content %}
+<div id="intro">
+    <h1>Hi, My name is Sayan.<br />
+        I'm a developer &amp;<br />
+        I build random stuffs .</h1>
+</div>
+<div class="grid-row clearfix">
+    <div class="column-half">
+        <h2>Latest posts</h2>
+        {{ macros.render_latest_posts(count=5) }}
+        <br />
+        <p>I'm also found writing at
+        <a href="http://fosswithme.wordpress.com">
+            Intellectual Web</a>.</p>
+    </div>
+    <div class="column-half">
+    </div>
+</div>
+<p>You can find me on:</p>
+<ul class="contact-list clearfix">
+    <li><a href="http://twitter.com/chowdhury_sayan">Twitter</a></li>
+    <li><a href="http://in.linkedin.com/in/sayanchowdhury/">LinkedIn</a></li>
+    <li><a href="https://github.com/sayanchowdhury">GitHub</a></li>
+    <li><a href="https://www.facebook.com/synpro">Facebook</a></li>
+</ul>
+<div class="footer">
+    <p>Theme by <a href="http://merlin.rebrovic.net/">Merlin Rebrović</a></p>
+</div>
+{% endblock %}

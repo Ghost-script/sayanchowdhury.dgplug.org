@@ -1,0 +1,66 @@
+{% extends "base.j2" %}
+
+{% block content %}
+<article class="asymetrical-columns-left reading-block clearfix">
+<div id="photo-and-caption">
+    <div id="photo">
+        <img src="{{ media_url('img/profile_photo.jpg') }}"
+            alt="Merlin's profile photo" />
+    </div>
+    <p>Developer at <a href="http://www.hackerearth.com/">
+        HackerEarth.</a>
+    </p>
+</div>
+
+<div id="fun-facts">
+    {% filter markdown|typogrify -%}
+About Me
+---------
+
+* Pythonista
+* Djangonaut
+* Linux User
+* VIM Lover
+* Formula One Fan
+* Photographer
+* Wannabe Mac user
+* Adventurer
+
+    {%- endfilter %}
+<div>
+</article>
+
+<article class="asymetrical-columns-right reading-block">
+{% filter markdown|typogrify -%}
+A longer version for the curious
+================================
+
+I'm from a sub-urban city called 'Jamshedpur' in the eastern part of a country called 'India'.
+My name is Sayan Chowdhury, born on 23rd of June 1991 in the city Jamshedpur.
+I am currently doing my engineering in Computer Science from Dr.B.C.Roy 
+Engineering College which is expected to end by June, 2013.
+
+Early Life
+----------
+I did my schooling from Jamshedpur Public School, Jamshedpur. I was highly
+engaged in co-curricular activities during my school days. The random stuffs
+include of me being an archer, a cager, an artist, a mountaineer, a paddler and last but
+not the least a student.
+
+Engineering
+-----------
+11,181 - This was the rank which got me admission into Dr.B.C.Roy Engineering College
+through WB-JEE. I got to know about GNU/Linux in my college life itself. The guys who
+helped me to dive into the depths of various open-source technologies were <a href="
+http://kushaldas.in/">Kushal Das</a>, <a href="http://www.rtnpro.com">Ratnadeep Debnath</a>
+and <a href="http://honeyinveins.wordpress.com/">Kishan Goyal</a>. I contributed to
+various open-source projects namely Askbot, Transifex, Dorrie etc. Currently, I am doing
+my internship at HackerEarth and waiting for my college to end. I will be joining
+HackerEarth as a full-time employee post graduation.
+
+Professional
+------------
+Oops, Still a student.
+{%- endfilter %}
+</article>
+{% endblock %}

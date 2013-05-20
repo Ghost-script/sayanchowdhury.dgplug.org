@@ -1,0 +1,5 @@
+deploy/
+.hyde_deps
+*.pyc
+*~
+content/media/external
