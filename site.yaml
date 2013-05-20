@@ -11,7 +11,7 @@ plugins:
     - hyde.ext.plugins.textlinks.TextlinksPlugin
 meta:
     nodemeta: meta.yaml
-    ga_tracking_code: UA-21972762-1
+    ga_tracking_code: UA-41061985-1
 context:
     data:
         menu:
