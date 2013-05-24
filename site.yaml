@@ -14,6 +14,7 @@ meta:
     ga_tracking_code: UA-41061985-1
 context:
     data:
+        base: http://sayanchowdhury.dgplug.org
         menu:
             - name: Home
               type: page

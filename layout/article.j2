@@ -10,7 +10,10 @@
 {%- endif %}
 
 {% if resource.meta.title -%}
+{% set url = base + content_url(resource.url)|urlencode %}
 <h1>{{ resource.meta.title }}</h1>
+<a href="https://twitter.com/share" class="twitter-share-button" data-dnt="true" data-count="none" data-url="{{ url }}" data-via="chowdhury_sayan">Tweet</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
 {%- endif %}
 
 {% filter markdown|typogrify -%}
